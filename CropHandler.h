@@ -109,3 +109,9 @@ public:
     	// AVFrame��buffer
 	AVFrame *allocate_frame_buffer(AVCodecContext *codec_ctx,
 		double width, double height);
+
+    	//�g�J���Y�n��frame
+	bool write_frame(AVCodecContext *codec_ctx,
+		AVFormatContext *fmt_ctx, AVFrame *frame);
+};
+
