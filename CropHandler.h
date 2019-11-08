@@ -33,3 +33,12 @@ using namespace cv;
 
 class Mediator;
 class CropHandler
+{
+private:
+	
+	// 2D array for opencv ROI funcs index
+	struct Pos
+	{
+		int x;
+		int y;
+	};
