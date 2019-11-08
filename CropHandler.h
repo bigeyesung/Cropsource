@@ -42,3 +42,17 @@ private:
 		int x;
 		int y;
 	};
+    double m_cur_frames;					//���e�B�z��frame index
+	int m_Width;
+	int m_Height;
+	int m_Width_ptx;
+	int m_Height_ptx;
+	int m_Width_num;
+	int m_Height_num;
+	int m_FPS;
+	int m_Totalframes;
+	int m_Crop_status;						//0: �ǳƤ���,1: ���b����, 2: ���Χ���
+	int m_delta_w;							//left, right�W�[pixel ��
+	int m_delta_h;							//top, bottom�W�[pixel ��
+	int m_left, m_right, m_top, m_bottom;	//openCV::copyMakeBorder �Ѽ�
+	AVCodecID m_Codec;
