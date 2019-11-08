@@ -56,3 +56,13 @@ private:
 	int m_delta_h;							//top, bottom�W�[pixel ��
 	int m_left, m_right, m_top, m_bottom;	//openCV::copyMakeBorder �Ѽ�
 	AVCodecID m_Codec;
+
+    Mediator* p_mediator;
+	std::string m_CRF;
+	std::string m_Videoname;
+	std::vector<std::string> m_paths;		 //�s����θ��|
+	boost::thread* m_crop_thread;			//����thread
+	boost::mutex m_mtx_;					//mutex lock unlock
+	bool m_Thread_finish;
+	bool m_is_stoped;						//���_flag default = false;
+	bool m_need_init;						//true: init the class ,false: class is running/ no need to init
