@@ -97,3 +97,11 @@ public:
 	//�]�wAVformat
 	int initialize_avformat_context(AVFormatContext *&fctx, const char * output);
 	int initialize_io_context(AVFormatContext *&fctx, const char *output);
+
+    //
+	void set_codec_params(AVFormatContext *&fctx, AVCodecContext *&codec_ctx,
+		 double width, double height, int fps);
+	int initialize_codec_stream(AVStream *&stream, AVCodecContext *&codec_ctx,
+		 AVCodec *&codec);
+	SwsContext *initialize_sample_scaler(AVCodecContext *codec_ctx,
+		double width, double height);
