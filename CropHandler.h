@@ -66,3 +66,17 @@ private:
 	bool m_Thread_finish;
 	bool m_is_stoped;						//���_flag default = false;
 	bool m_need_init;						//true: init the class ,false: class is running/ no need to init
+
+public:
+	explicit CropHandler(Mediator* mediator);
+	~CropHandler();
+	//void SetParam(CropParams& cropref);
+	bool CheckInit();                               //check class working 
+	bool CheckCropData();							//�T�{���θ�Ʀs�b
+	bool is_file_exist(const char * fileName);		//�T�{�����ɮ׳��s�b
+	void SetParam();								//�]�w���ΰѼ�
+	void SetCropStatus(int status);					//�]�wcrop���A
+	void SetInit(bool needinit);
+	void SetcopyMakeBorderParams(int& delta_w,int& delta_h);//openCV mat�e����j��
+	void GetCropfilepath();							//�o��s������ɮצ�m
+	void CropVideo();								//���μv��(��thread)
