@@ -72,23 +72,28 @@ public:
 	~CropHandler();
 	//void SetParam(CropParams& cropref);
 	bool CheckInit();                               //check class working 
-	bool CheckCropData();							//�T�{���θ�Ʀs�b
-	bool is_file_exist(const char * fileName);		//�T�{�����ɮ׳��s�b
-	void SetParam();								//�]�w���ΰѼ�
-	void SetCropStatus(int status);					//�]�wcrop���A
+	bool CheckCropData();							//
+	bool is_file_exist(const char * fileName);		//
+	void SetParam();								//
+	void SetCropStatus(int status);					//
 	void SetInit(bool needinit);
 	void SetcopyMakeBorderParams(int& delta_w,int& delta_h);//openCV mat�e����j��
-	void GetCropfilepath();							//�o��s������ɮצ�m
-	void CropVideo();								//���μv��(��thread)
+	void GetCropfilepath();							//
+	void CropVideo();								//�(��thread)
 
 	//
 	bool ffmpegInitParam(AVFormatContext *& ofmt_ctx, AVCodec *& out_codec, AVStream *& out_stream,
 		AVCodecContext *& out_codec_ctx, string & output_path, SwsContext *&swsctx, AVFrame *&frame,
 		int output_w, int output_h);
 	void CropVideo2();
-	void StartCrop();								//���ζ}�l�쵲��(�Dthread)
+	void StartCrop();								//(�Dthread)
 	void init();
 	void clear();
-	int GetCropStatus();							//���ocrop���A
-	int Rounding(double ori);						//�|�ˤ��J
+	int GetCropStatus();							//crop
+	int Rounding(double ori);						//
 	cv::VideoCapture GetVideo();
+
+    //-----FFmpeg funcs--------//
+	//�]�wAVformat
+	int initialize_avformat_context(AVFormatContext *&fctx, const char * output);
+	int initialize_io_context(AVFormatContext *&fctx, const char *output);
