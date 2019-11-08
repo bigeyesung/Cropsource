@@ -105,3 +105,7 @@ public:
 		 AVCodec *&codec);
 	SwsContext *initialize_sample_scaler(AVCodecContext *codec_ctx,
 		double width, double height);
+
+    	// AVFrame��buffer
+	AVFrame *allocate_frame_buffer(AVCodecContext *codec_ctx,
+		double width, double height);
