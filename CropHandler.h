@@ -20,3 +20,10 @@ extern "C" {
 #include <libswscale/swscale.h>
 #include <libavutil/imgutils.h>
 }
+
+// OpenCV
+#include <opencv2/opencv.hpp>
+#include <opencv/cv.h>
+#include <opencv2/highgui.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
