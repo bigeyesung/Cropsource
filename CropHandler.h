@@ -80,3 +80,15 @@ public:
 	void SetcopyMakeBorderParams(int& delta_w,int& delta_h);//openCV mat�e����j��
 	void GetCropfilepath();							//�o��s������ɮצ�m
 	void CropVideo();								//���μv��(��thread)
+
+	//
+	bool ffmpegInitParam(AVFormatContext *& ofmt_ctx, AVCodec *& out_codec, AVStream *& out_stream,
+		AVCodecContext *& out_codec_ctx, string & output_path, SwsContext *&swsctx, AVFrame *&frame,
+		int output_w, int output_h);
+	void CropVideo2();
+	void StartCrop();								//���ζ}�l�쵲��(�Dthread)
+	void init();
+	void clear();
+	int GetCropStatus();							//���ocrop���A
+	int Rounding(double ori);						//�|�ˤ��J
+	cv::VideoCapture GetVideo();
