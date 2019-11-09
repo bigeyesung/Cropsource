@@ -141,3 +141,20 @@ void CropHandler::SetParam()
 	double crop_w = cropparams->Width / (cropparams->W_n - (cropparams->W_n - 1)*cropparams->W_ptx);
 	int temp_h = crop_h;
 	int temp_w = crop_w;
+    if (temp_h%2 == 0)
+	{
+		//cropparams->C_h = floor(cropparams->Height /
+		//			   (cropparams->H_n - (cropparams->H_n - 1)*cropparams->H_ptx));
+		cropparams->C_h = temp_h;
+	}
+	else
+	{
+		cropparams->C_h = temp_h + 1;
+		h_reset = 1;
+	}
+	if (temp_w %2 ==0)
+	{
+		/*cropparams->C_w = floor(cropparams->Width /
+					   (cropparams->W_n - (cropparams->W_n - 1)*cropparams->W_ptx));*/
+		cropparams->C_w = temp_w;
+	}
