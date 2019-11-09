@@ -116,3 +116,14 @@ void CropHandler::SetParam(CropParams & cropref)
 	ReadPath();
 }
 
+void CropHandler::SetParam()
+{
+	CropParams* cropparams = p_mediator->GetSHMhandler()->LoadFromShm();
+	m_Videoname = cropparams->path;
+	cv::VideoCapture cap(m_Videoname);
+	int w_reset = 0;
+	int h_reset = 0;
+	int new_w = 0;
+	int new_h = 0;
+	m_delta_h = 0;
+	m_delta_w = 0;
