@@ -220,3 +220,20 @@ void CropHandler::SetParam()
 	m_CRF = to_string(cropparams->CRF);
 	cropparams = NULL;
 }
+
+void CropHandler::CropVideo()
+{
+	ofstream myfile;
+	myfile.open("time.txt");
+	clock_t begin1 = clock();
+	clock_t begin = clock();
+
+	//確認SHM資料存在
+	if (!CheckCropData())
+	 return;
+	CropParams* cropparams = p_mediator->GetSHMhandler()->LoadFromShm();
+
+	//設定切割Thread狀態:未完成
+	m_mtx_.lock();
+	m_Thread_finish = false;
+	m_mtx_.unlock();
