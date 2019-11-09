@@ -115,3 +115,4 @@ void CropHandler::SetParam(CropParams & cropref)
 	m_CRF = "20";
 	ReadPath();
 }
+
