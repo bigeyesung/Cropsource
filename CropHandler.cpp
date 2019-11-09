@@ -172,4 +172,32 @@ void CropHandler::SetParam()
 		double float_num = 0;
 		double ori = 0.0f;
 		if (h_reset == 1)
-        
+        	{
+			//ex: 新高 = n*切割高-(n-1)*切割高*重疊比
+			//切割高*重疊比=浮點數->要先四捨五入避免誤差
+			int temp1 = cropparams->H_n*cropparams->C_h;
+			int temp2 = (cropparams->H_n - 1)*Rounding(cropparams->C_h*cropparams->H_ptx);
+			new_h = temp1 - temp2;
+			//ori = cropparams->C_h*(cropparams->H_n - (cropparams->H_n - 1)*cropparams->H_ptx);
+			//new_h = Rounding(ori); 
+		}
+		if (w_reset == 1)
+		{
+			
+			int temp1 = cropparams->W_n*cropparams->C_w;
+			int temp2 = (cropparams->W_n- 1)*Rounding(cropparams->C_w*cropparams->W_ptx);
+			new_w = temp1 - temp2;
+			//ori = cropparams->C_w*(cropparams->W_n - (cropparams->W_n - 1)*cropparams->W_ptx);
+			//new_w = Rounding(ori);
+		}
+
+		if (new_w != 0)
+		{
+			m_delta_w = (new_w - cropparams->Width);
+			cropparams->Width = new_w;
+		}
+		if (new_h != 0)
+		{
+			m_delta_h = (new_h - cropparams->Height);
+			cropparams->Height = new_h;
+		}
