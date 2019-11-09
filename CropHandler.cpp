@@ -158,3 +158,17 @@ void CropHandler::SetParam()
 					   (cropparams->W_n - (cropparams->W_n - 1)*cropparams->W_ptx));*/
 		cropparams->C_w = temp_w;
 	}
+    else
+	{
+		cropparams->C_w = temp_w + 1;
+		w_reset = 1;
+	}
+	
+	//
+	//重新設定來源影片寬高(四捨五入)
+	if (h_reset == 1 || w_reset == 1)
+	{
+		int integer = 0;
+		double float_num = 0;
+		double ori = 0.0f;
+		if (h_reset == 1)
