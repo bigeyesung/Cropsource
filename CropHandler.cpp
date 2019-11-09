@@ -201,3 +201,22 @@ void CropHandler::SetParam()
 			m_delta_h = (new_h - cropparams->Height);
 			cropparams->Height = new_h;
 		}
+
+	SetcopyMakeBorderParams(m_delta_w, m_delta_h);
+
+	}
+
+	m_FPS = cropparams->Fps;
+	m_Totalframes = cropparams->Frames;
+	if (cropparams->Codec == En_H264)
+	{
+		m_Codec = AV_CODEC_ID_H264;
+	}
+	else if (cropparams->Codec == En_H265)
+	{
+		m_Codec = AV_CODEC_ID_H265;
+	}
+
+	m_CRF = to_string(cropparams->CRF);
+	cropparams = NULL;
+}
