@@ -172,3 +172,4 @@ void CropHandler::SetParam()
 		double float_num = 0;
 		double ori = 0.0f;
 		if (h_reset == 1)
+        
