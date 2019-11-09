@@ -10,3 +10,18 @@ CropHandler::CropHandler(Mediator* mediator)
 	m_crop_thread = NULL;
 	
 }
+
+CropHandler::~CropHandler()
+{
+	//if (p_mediator != NULL)
+	//{
+	//	p_mediator = NULL;
+	//}
+
+	if (m_crop_thread != NULL)
+	{
+		delete m_crop_thread;
+		m_crop_thread = NULL;
+	}
+	
+}
