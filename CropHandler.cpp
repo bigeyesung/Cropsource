@@ -127,3 +127,17 @@ void CropHandler::SetParam()
 	int new_h = 0;
 	m_delta_h = 0;
 	m_delta_w = 0;
+
+    //changing what cropdata is pointing to
+	cropparams->Height = cap.get(CV_CAP_PROP_FRAME_HEIGHT);
+	cropparams->Width = cap.get(CV_CAP_PROP_FRAME_WIDTH);
+	cropparams->Fps = cap.get(CV_CAP_PROP_FPS);
+	cropparams->Frames = cap.get(CV_CAP_PROP_FRAME_COUNT);
+
+	//h264規定 h,w 必須被2整除
+	//if temp_h,w 偶數:直接取小於自己的最大整數
+	//if temp_h,w 奇數:直接取大於自己的最小整數
+	double crop_h = cropparams->Height / (cropparams->H_n - (cropparams->H_n - 1)*cropparams->H_ptx);
+	double crop_w = cropparams->Width / (cropparams->W_n - (cropparams->W_n - 1)*cropparams->W_ptx);
+	int temp_h = crop_h;
+	int temp_w = crop_w;
