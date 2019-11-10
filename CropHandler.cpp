@@ -536,3 +536,15 @@ bool CropHandler::ffmpegInitParam(
 	f_ret = initialize_avformat_context(ofmt_ctx, output_filename);
 	if (f_ret < 0)
 	{
+
+    cropparams->ErrIndex = Fail_allocate_output_format_context;
+		m_is_stoped = true;
+		return false;
+	}
+	f_ret = initialize_io_context(ofmt_ctx, output_filename);
+	if (f_ret < 0)
+	{
+		cropparams->ErrIndex = Fail_open_output_IO_context;
+		m_is_stoped = true;
+		return false;
+	}
