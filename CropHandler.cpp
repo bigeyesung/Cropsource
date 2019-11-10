@@ -597,3 +597,20 @@ void CropHandler::CropVideo2()
 	m_mtx_.lock();
 	m_Thread_finish = false;
 	m_mtx_.unlock();
+
+    Pos** pos = new Pos*[cropparams->H_n];
+	for (int k = 0; k < cropparams->H_n; k++)
+		pos[k] = new Pos[cropparams->W_n];
+
+	//初始化 FFmpeg library
+	av_register_all();
+
+	double Totalframes = cropparams->H_n*cropparams->W_n*cropparams->Frames;
+	int w_cover = Rounding(cropparams->W_ptx*cropparams->C_w);
+	int h_cover = Rounding(cropparams->H_ptx*cropparams->C_h);
+
+	clock_t end = clock();
+	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	myfile << "init time: " << elapsed_secs << endl;
+	begin = 0;
+	end = 0;
