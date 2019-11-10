@@ -666,3 +666,42 @@ void CropHandler::CropVideo2()
 			}
 			else
 				h_range = cropparams->C_h;
+
+            	std::string output_path = m_paths[cropparams->W_n* i + j];
+			const char *output_filename = output_path.c_str();
+
+			end = clock();
+			elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+			myfile << "check range done: " << elapsed_secs << endl;
+			begin = 0;
+			end = 0;
+
+			// Output video size
+			//const int output_w = cropparams->C_w;
+			//const int output_h = cropparams->C_h;
+
+			begin = clock();
+			const int output_w = w_range;
+			const int output_h = h_range;
+			av_register_all();
+			int ret;
+			auto video_capture = GetVideo();
+			//auto video_capture1 = GetVideo();
+			if (m_is_stoped)
+			{
+				cropparams->ErrIndex = Fail_open_video_capture;
+				break;
+			}
+			//初始化 Mat
+			//video_capture.set(cv::CAP_PROP_FRAME_WIDTH, output_w);
+			//video_capture.set(cv::CAP_PROP_FRAME_HEIGHT, output_h);
+			std::vector<uint8_t> imgbuf(output_h * output_w * 4 + 16);
+			cv::Mat image(output_h, output_w, CV_8UC4, imgbuf.data(), output_w * 4);
+			//cv::Mat Ori_image(output_h, output_w, CV_8UC4, imgbuf.data(), output_w * 4);
+			//cv::Mat Changed_image(output_h, output_w, CV_8UC4, imgbuf.data(), output_w * 4);
+
+			end = clock();
+			elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+			myfile << "set mat done:: " << elapsed_secs << endl;
+			begin = 0;
+			end = 0;
