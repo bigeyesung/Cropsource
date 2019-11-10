@@ -267,3 +267,16 @@ void CropHandler::CropVideo()
 	VideoCapture video_capture;
 	video_capture = GetVideo();
 	int w_range, h_range;
+
+    vector<AVFormatContext*> ofmt_ctx;
+	ofmt_ctx.resize(cropparams->H_n*cropparams->W_n);
+	vector<AVCodec*> out_codec;
+	out_codec.resize(cropparams->H_n*cropparams->W_n);
+	vector<AVStream*> out_stream;
+	out_stream.resize(cropparams->H_n*cropparams->W_n);
+	vector<AVCodecContext*> out_codec_ctx;
+	out_codec_ctx.resize(cropparams->H_n*cropparams->W_n);
+	vector<SwsContext*> swsctx;
+	swsctx.resize(cropparams->H_n*cropparams->W_n);
+	vector<AVFrame*> frame;
+	frame.resize(cropparams->H_n*cropparams->W_n);
