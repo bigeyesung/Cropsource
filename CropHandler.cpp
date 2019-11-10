@@ -476,3 +476,30 @@ void CropHandler::CropVideo()
 	myfile << "======next=========" << endl;
 	begin = 0;
 	end = 0;
+
+    	begin = clock();
+	 //檔案產生需要等待時間
+	Sleep(2000);
+	//確認切割檔案都存在
+	bool all_exist = true;
+	for (int i = 0; i < m_paths.size(); i++)
+	{
+		if (!is_file_exist(m_paths[i].c_str()))
+		{
+			all_exist = false;
+			break;
+		}
+	}
+	if (!all_exist)
+	{
+		cropparams->ErrIndex = File_not_all_exist;
+	}
+	end = clock();
+	elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	myfile << "check files exist: " << elapsed_secs << endl;
+	begin = 0;
+	end = 0;
+	begin = clock();
+
+	m_paths.clear();
+	m_cur_frames = 1;
