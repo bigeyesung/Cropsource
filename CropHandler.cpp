@@ -380,3 +380,24 @@ void CropHandler::CropVideo()
 			idx++;
 		}
 	}//forLoop done
+	begin = clock();
+	//讀取frame並寫入
+	for (int m = 0; m < m_Totalframes; m++)
+	{
+		if (m_is_stoped)
+			break;
+		
+		//set ROI	
+		video_capture >> image;
+		//video_capture1 >> Ori_image;
+		//如果要放大影片->邊界放大
+		if (m_delta_h != 0 || m_delta_w != 0)
+		{
+			//copyMakeBorder(Ori_image, Changed_image, 0, m_delta_h,
+			//	m_delta_w, m_delta_w, BORDER_REPLICATE);
+			//image = Changed_image;
+			copyMakeBorder(image, image, m_top, m_bottom,
+				m_left, m_right, BORDER_REPLICATE);
+			//image = Changed_image;
+		}
+		int idx = 0;
