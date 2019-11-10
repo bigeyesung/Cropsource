@@ -426,3 +426,21 @@ void CropHandler::CropVideo()
 					break;
 				}
 				idx++;
+
+                //取得當前進度
+				double cur_progress = m_cur_frames / Totalframes;
+				cropparams->TotalProgress = cur_progress * 100;
+				m_cur_frames++;
+				if (m_is_stoped)
+					break;
+
+			}
+		}
+		////取得當前進度
+		//double cur_progress = m_cur_frames / Totalframes;
+		//cropparams->TotalProgress = cur_progress * 100;
+		//m_cur_frames++;
+		//if (m_is_stoped)
+		//	break;
+
+	}
