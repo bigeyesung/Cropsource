@@ -316,3 +316,4 @@ void CropHandler::CropVideo()
 			myfile << "set pos done: " << elapsed_secs << endl;
 			begin = 0;
 			end = 0;
+
