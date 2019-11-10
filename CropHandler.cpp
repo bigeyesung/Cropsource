@@ -237,3 +237,17 @@ void CropHandler::CropVideo()
 	m_mtx_.lock();
 	m_Thread_finish = false;
 	m_mtx_.unlock();
+
+    vector<vector<Pos>> f_pos;
+	f_pos.resize(cropparams->H_n);
+	for (int i = 0; i < f_pos.size(); i++)
+	{
+		f_pos[i].resize(cropparams->W_n);
+	}
+
+	//Pos** pos = new Pos*[cropparams->H_n];
+	//for (int k = 0; k < cropparams->H_n; k++)
+	//	pos[k] = new Pos[cropparams->W_n];
+	
+	//初始化 FFmpeg library
+	av_register_all();
