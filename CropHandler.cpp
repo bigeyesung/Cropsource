@@ -733,3 +733,23 @@ void CropHandler::CropVideo2()
 			out_codec_ctx = avcodec_alloc_context3(out_codec);
 			set_codec_params(ofmt_ctx, out_codec_ctx, output_w, output_h, m_FPS);
 			ret = initialize_codec_stream(out_stream, out_codec_ctx, out_codec);
+            	if (ret < 0)
+			{
+				m_is_stoped = true;
+				break;
+			}
+
+			out_stream->codecpar->extradata = out_codec_ctx->extradata;
+			out_stream->codecpar->extradata_size = out_codec_ctx->extradata_size;
+			av_dump_format(ofmt_ctx, 0, output_filename, 1);
+			auto *swsctx = initialize_sample_scaler(out_codec_ctx, output_w, output_h);
+			auto *frame = allocate_frame_buffer(out_codec_ctx, output_w, output_h);
+			ret = avformat_write_header(ofmt_ctx, nullptr);
+			if (ret < 0)
+			{
+
+				cropparams->ErrIndex = Fail_write_header;
+				//exit(1);
+				m_is_stoped = true;
+				break;
+			}
