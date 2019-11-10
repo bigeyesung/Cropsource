@@ -503,3 +503,22 @@ void CropHandler::CropVideo()
 
 	m_paths.clear();
 	m_cur_frames = 1;
+
+    //設定切割thread狀態:完成
+	m_mtx_.lock();
+	m_Thread_finish = true;
+	m_mtx_.unlock();
+	cropparams = NULL;
+
+	end = clock();
+	elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	myfile << "crop done: " << elapsed_secs << endl;
+	begin = 0;
+	end = 0;
+
+	
+	clock_t end1 = clock();
+	elapsed_secs = double(end1 - begin1) / CLOCKS_PER_SEC;
+	myfile << "total time: " << elapsed_secs << endl;
+	myfile.close();
+}
