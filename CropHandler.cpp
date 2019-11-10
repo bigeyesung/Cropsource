@@ -363,3 +363,20 @@ void CropHandler::CropVideo()
 			begin = clock();
 
 			std::string output_path = m_paths[cropparams->W_n* i + j];
+            if (!ffmpegInitParam(ofmt_ctx[idx], out_codec[idx], out_stream[idx], out_codec_ctx[idx], output_path,
+				swsctx[idx], frame[idx], output_w, output_h))
+			{
+				break;
+			}
+
+			bool end_of_stream = false;
+
+			end = clock();
+			elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+			myfile << "set ffmpeg done:: " << elapsed_secs << endl;
+			begin = 0;
+			end = 0;
+
+			idx++;
+		}
+	}//forLoop done
