@@ -842,3 +842,20 @@ void CropHandler::CropVideo2()
 			{
 				swsctx = NULL;
 			}
+
+		//opencv clear
+			image.release();
+			//Ori_image.release();
+			//Changed_image.release();
+
+			avformat_free_context(ofmt_ctx);
+
+			end = clock();
+			elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+			console() << "clear ffmpeg ptr and opencv done: " << elapsed_secs;
+			myfile << "clear ffmpeg ptr and opencv done: " << elapsed_secs << endl;
+			myfile << "======next=========" << endl;
+			begin = 0;
+			end = 0;
+		}
+	}//forLoop done
