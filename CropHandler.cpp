@@ -401,3 +401,28 @@ void CropHandler::CropVideo()
 			//image = Changed_image;
 		}
 		int idx = 0;
+        for (int i = 0; i < f_pos.size(); i++)
+		{
+			if (m_is_stoped)
+				break;
+			
+			for (int j = 0; j < f_pos[i].size(); j++)
+			{
+				if (m_is_stoped)
+					break;
+
+				cv::Rect Rec(f_pos[i][j].x, f_pos[i][j].y, w_range, h_range);
+				ROIimage = image(Rec);
+
+				const int stride[] = { static_cast<int>(ROIimage.step[0]) };
+				sws_scale(swsctx[idx], &ROIimage.data, stride, 0, ROIimage.rows,
+					frame[idx]->data, frame[idx]->linesize);
+				frame[idx]->pts += av_rescale_q(1, out_codec_ctx[idx]->time_base,
+					out_stream[idx]->time_base);
+
+				//寫入
+				if (!write_frame(out_codec_ctx[idx], ofmt_ctx[idx], frame[idx]))
+				{
+					break;
+				}
+				idx++;
