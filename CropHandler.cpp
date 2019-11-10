@@ -317,3 +317,38 @@ void CropHandler::CropVideo()
 			begin = 0;
 			end = 0;
 
+			begin = clock();
+			//判斷切割位置在原始/放大影片W,H範圍內
+			//int w_range, h_range;
+			//W
+			if (f_pos[i][j].x + cropparams->C_w - 1 > cropparams->Width)
+			{
+				w_range = cropparams->Width - f_pos[i][j].x;
+			}
+			else
+				w_range = cropparams->C_w;
+			//H
+			if (f_pos[i][j].y + cropparams->C_h - 1 > cropparams->Height)
+			{
+				h_range = cropparams->Height - f_pos[i][j].y;
+			}
+			else
+				h_range = cropparams->C_h;
+
+			end = clock();
+			elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+			myfile << "check range done: " << elapsed_secs << endl;
+			begin = 0;
+			end = 0;
+
+			begin = clock();
+			const int output_w = w_range;
+			const int output_h = h_range;
+			av_register_all();
+			int ret;
+			//auto video_capture1 = GetVideo();
+			if (m_is_stoped)
+			{
+				cropparams->ErrIndex = Fail_open_video_capture;
+				break;
+			}
