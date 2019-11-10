@@ -465,3 +465,14 @@ void CropHandler::CropVideo()
 		}
 		avformat_free_context(ofmt_ctx[i]);
 	}
+
+	//opencv clear
+	image.release();
+
+
+	end = clock();
+	elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	myfile << "clear ffmpeg ptr and opencv done: " << elapsed_secs << endl;
+	myfile << "======next=========" << endl;
+	begin = 0;
+	end = 0;
