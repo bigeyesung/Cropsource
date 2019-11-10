@@ -548,3 +548,18 @@ bool CropHandler::ffmpegInitParam(
 		m_is_stoped = true;
 		return false;
 	}
+
+	out_codec = avcodec_find_encoder(m_Codec);
+	out_stream = avformat_new_stream(ofmt_ctx, out_codec);
+	out_codec_ctx = avcodec_alloc_context3(out_codec);
+	set_codec_params(ofmt_ctx, out_codec_ctx, output_w, output_h, m_FPS);
+	f_ret = initialize_codec_stream(out_stream, out_codec_ctx, out_codec);
+	if (f_ret < 0)
+	{
+		m_is_stoped = true;
+		return false;
+	}
+
+	out_stream->codecpar->extradata = out_codec_ctx->extradata;
+	out_stream->codecpar->extradata_size = out_codec_ctx->extradata_size;
+	av_dump_format(ofmt_ctx, 0, output_filename, 1);
