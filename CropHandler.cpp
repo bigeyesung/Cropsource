@@ -649,3 +649,20 @@ void CropHandler::CropVideo2()
 			myfile << "set pos done: " << elapsed_secs << endl;
 			begin = 0;
 			end = 0;
+            	begin = clock();
+			//判斷切割位置在原始/放大影片W,H範圍內
+			int w_range, h_range;
+			//W
+			if (pos[i][j].x + cropparams->C_w - 1> cropparams->Width)
+			{
+				w_range = cropparams->Width - pos[i][j].x;
+			}
+			else
+				w_range = cropparams->C_w;
+			//H
+			if (pos[i][j].y + cropparams->C_h - 1> cropparams->Height)
+			{
+				h_range = cropparams->Height - pos[i][j].y;
+			}
+			else
+				h_range = cropparams->C_h;
