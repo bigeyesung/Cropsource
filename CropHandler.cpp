@@ -753,3 +753,34 @@ void CropHandler::CropVideo2()
 				m_is_stoped = true;
 				break;
 			}
+
+            	bool end_of_stream = false;
+
+			end = clock();
+			elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+			myfile << "set ffmpeg done:: " << elapsed_secs << endl;
+			begin = 0;
+			end = 0;
+
+			begin = clock();
+			clock_t f_be, f_end;
+			//讀取frame並寫入
+			for (int m = 0; m < m_Totalframes; m++)
+			{
+				f_be = clock();
+				//set ROI	
+				video_capture >> image;
+				//video_capture1 >> Ori_image;
+				//如果要放大影片->邊界放大
+				if (m_delta_h != 0 || m_delta_w != 0)
+				{
+					//copyMakeBorder(Ori_image, Changed_image, 0, m_delta_h,
+					//	m_delta_w, m_delta_w, BORDER_REPLICATE);
+					//image = Changed_image;
+					copyMakeBorder(image, image, m_top, m_bottom,
+						m_left, m_right, BORDER_REPLICATE);
+					//image = Changed_image;
+				}
+				f_end = clock();
+				elapsed_secs = double(f_end - f_be) / CLOCKS_PER_SEC;
+				myfile << elapsed_secs << "\t";
