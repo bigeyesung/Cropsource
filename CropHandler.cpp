@@ -444,3 +444,24 @@ void CropHandler::CropVideo()
 		//	break;
 
 	}
+
+	end = clock();
+	elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	myfile << "crop 1 video done: " << elapsed_secs << endl;
+	begin = 0;
+	end = 0;
+
+	//清除ffmpeg ptr
+	begin = clock();
+	for (int i = 0; i < ofmt_ctx.size(); i++)
+	{
+		av_write_trailer(ofmt_ctx[i]);
+		av_frame_free(&frame[i]);
+		avcodec_close(out_codec_ctx[i]);
+		avio_close(ofmt_ctx[i]->pb);
+		if (out_stream[i]->codecpar->extradata != NULL)
+		{
+			out_stream[i]->codecpar->extradata = NULL;
+		}
+		avformat_free_context(ofmt_ctx[i]);
+	}
