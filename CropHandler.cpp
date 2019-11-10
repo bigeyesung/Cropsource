@@ -614,3 +614,38 @@ void CropHandler::CropVideo2()
 	myfile << "init time: " << elapsed_secs << endl;
 	begin = 0;
 	end = 0;
+
+    	//切割loop 開始
+	for (int i = 0; i < cropparams->H_n; i++)
+	{
+		if (m_is_stoped)
+			break;
+		for (int j = 0; j < cropparams->W_n; j++)
+		{
+			begin = clock();
+			if (m_is_stoped)
+				break;
+			//設定ROI 位置
+			//M = (開始位置+length*幾段 -重疊段 -1)
+			//pos = M+1-重疊段
+			if (j == 0)
+				pos[i][j].x = 0;
+			else
+			{
+				int M = 0 + j*cropparams->C_w - (j - 1)*(w_cover)-1;
+				pos[i][j].x = M + 1 - w_cover;
+			}
+
+			if (i == 0)
+				pos[i][j].y = 0;
+			else
+			{
+				int M = 0 + i*cropparams->C_h - (i - 1)*(h_cover)-1;
+				pos[i][j].y = M + 1 - h_cover;
+			}
+			//
+			end = clock();
+			elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+			myfile << "set pos done: " << elapsed_secs << endl;
+			begin = 0;
+			end = 0;
