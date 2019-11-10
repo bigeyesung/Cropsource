@@ -522,3 +522,17 @@ void CropHandler::CropVideo()
 	myfile << "total time: " << elapsed_secs << endl;
 	myfile.close();
 }
+
+bool CropHandler::ffmpegInitParam(
+	AVFormatContext *&ofmt_ctx, AVCodec *&out_codec, AVStream *&out_stream,
+	AVCodecContext *&out_codec_ctx, string& output_path,
+	SwsContext *&swsctx, AVFrame *&frame, 
+	int output_w, int output_h)
+{
+	CropParams* cropparams = p_mediator->GetSHMhandler()->LoadFromShm();
+	int f_ret;
+	//設定ffmpeg參數
+	const char *output_filename = output_path.c_str();
+	f_ret = initialize_avformat_context(ofmt_ctx, output_filename);
+	if (f_ret < 0)
+	{
