@@ -251,3 +251,19 @@ void CropHandler::CropVideo()
 	
 	//初始化 FFmpeg library
 	av_register_all();
+
+    double Totalframes = cropparams->H_n*cropparams->W_n*cropparams->Frames;
+	int w_cover = Rounding(cropparams->W_ptx*cropparams->C_w);
+	int h_cover = Rounding(cropparams->H_ptx*cropparams->C_h);
+	
+	clock_t end = clock();
+	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	myfile << "init time: " << elapsed_secs<<endl;
+	begin = 0;
+	end = 0;
+
+	Mat image;
+	Mat ROIimage;
+	VideoCapture video_capture;
+	video_capture = GetVideo();
+	int w_range, h_range;
