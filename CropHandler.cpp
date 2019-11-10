@@ -352,3 +352,14 @@ void CropHandler::CropVideo()
 				cropparams->ErrIndex = Fail_open_video_capture;
 				break;
 			}
+
+            end = clock();
+			elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+			myfile << "set mat done:: " << elapsed_secs << endl;
+			begin = 0;
+			end = 0;
+
+			//設定ffmpeg參數
+			begin = clock();
+
+			std::string output_path = m_paths[cropparams->W_n* i + j];
