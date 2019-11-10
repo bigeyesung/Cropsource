@@ -817,3 +817,28 @@ void CropHandler::CropVideo2()
 					break;
 
 			}
+
+            end = clock();
+			elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+			myfile << "crop 1 video done: " << elapsed_secs << endl;
+			begin = 0;
+			end = 0;
+
+			//清除ffmpeg ptr
+			begin = clock();
+			av_write_trailer(ofmt_ctx);
+			av_frame_free(&frame);
+			avcodec_close(out_codec_ctx);
+			avio_close(ofmt_ctx->pb);
+			if (output_filename != NULL)
+			{
+				output_filename = NULL;
+			}
+			if (out_stream->codecpar->extradata != NULL)
+			{
+				out_stream->codecpar->extradata = NULL;
+			}
+			if (swsctx != NULL)
+			{
+				swsctx = NULL;
+			}
