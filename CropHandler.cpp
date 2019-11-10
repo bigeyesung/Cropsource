@@ -784,3 +784,36 @@ void CropHandler::CropVideo2()
 				f_end = clock();
 				elapsed_secs = double(f_end - f_be) / CLOCKS_PER_SEC;
 				myfile << elapsed_secs << "\t";
+
+                f_be = clock();
+				cv::Rect Rec(pos[i][j].x, pos[i][j].y, w_range, h_range);
+				image = image(Rec);
+				f_end = clock();
+				elapsed_secs = double(f_end - f_be) / CLOCKS_PER_SEC;
+				myfile << elapsed_secs << "\t";
+
+				f_be = clock();
+				const int stride[] = { static_cast<int>(image.step[0]) };
+				sws_scale(swsctx, &image.data, stride, 0, image.rows,
+					frame->data, frame->linesize);
+				frame->pts += av_rescale_q(1, out_codec_ctx->time_base,
+					out_stream->time_base);
+				f_end = clock();
+				elapsed_secs = double(f_end - f_be) / CLOCKS_PER_SEC;
+				myfile << elapsed_secs << "\t";
+
+				f_be = clock();
+				//寫入
+				write_frame(out_codec_ctx, ofmt_ctx, frame);
+				f_end = clock();
+				elapsed_secs = double(f_end - f_be) / CLOCKS_PER_SEC;
+				myfile << elapsed_secs << "\t" << m << endl;
+
+				//取得當前進度
+				double cur_progress = m_cur_frames / Totalframes;
+				cropparams->TotalProgress = cur_progress * 100;
+				m_cur_frames++;
+				if (m_is_stoped)
+					break;
+
+			}
