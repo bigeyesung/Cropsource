@@ -910,3 +910,22 @@ begin = clock();
 	myfile << "total time: " << elapsed_secs << endl;
 	myfile.close();
 }
+
+void CropHandler::StartCrop()
+{
+	
+	//check init
+	if (!m_need_init)
+	{
+		init();
+	}
+
+	//確認SHM資料存在
+	if (!CheckCropData())
+		return;
+	CropParams* cropparams = p_mediator->GetSHMhandler()->LoadFromShm();
+
+	//取得中斷指令->1:中斷
+	int	index = cropparams->NotifyInterrupt;
+	if (index==1)
+	{
