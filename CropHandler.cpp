@@ -705,3 +705,31 @@ void CropHandler::CropVideo2()
 			myfile << "set mat done:: " << elapsed_secs << endl;
 			begin = 0;
 			end = 0;
+
+            //設定ffmpeg參數
+			begin = clock();
+			AVFormatContext *ofmt_ctx = nullptr;
+			AVCodec *out_codec = nullptr;
+			AVStream *out_stream = nullptr;
+			AVCodecContext *out_codec_ctx = nullptr;
+			ret = initialize_avformat_context(ofmt_ctx, output_filename);
+			if (ret < 0)
+			{
+
+				cropparams->ErrIndex = Fail_allocate_output_format_context;
+				m_is_stoped = true;
+				break;
+			}
+			ret = initialize_io_context(ofmt_ctx, output_filename);
+			if (ret < 0)
+			{
+				cropparams->ErrIndex = Fail_open_output_IO_context;
+				m_is_stoped = true;
+				break;
+			}
+
+			out_codec = avcodec_find_encoder(m_Codec);
+			out_stream = avformat_new_stream(ofmt_ctx, out_codec);
+			out_codec_ctx = avcodec_alloc_context3(out_codec);
+			set_codec_params(ofmt_ctx, out_codec_ctx, output_w, output_h, m_FPS);
+			ret = initialize_codec_stream(out_stream, out_codec_ctx, out_codec);
