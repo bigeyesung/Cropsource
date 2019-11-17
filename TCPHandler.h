@@ -41,3 +41,14 @@ public:
 	int  GetTCPCmd() { return TCPCmd; }
 	//���s�u�b����
 	void Update();
+//���s�u�b����
+	void Draw();
+	void ConnectServer();
+	//bool IsConnect() { return m_IsConnect; }
+
+	//�����^����
+	void SetShaderPara_WindowCapture(int BindIndex);
+	void Draw_WindowCapture();
+	//Ū�� ����shader mesh ��� , ���i���Ƨ��� �ҥH���sŪ���P���ɮ�
+	void DrawInit(string ReceiveName, bool ReInit = false);
+	bool IsWindowCapture() { return m_DrawState == State_DrawWindowCapture; }//�^�ǬO�_�b�����^��
