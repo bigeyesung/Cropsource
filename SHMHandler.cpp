@@ -39,3 +39,14 @@ bool SHMHandler::GetSHMStatus()
 	else
 		return true;
 }
+
+bool SHMHandler::init()
+{
+	pkWebcamParamsSHM = NULL;
+	cropparams = NULL;
+	//WinAPISharedMem<CropParams>* pkWebcamParamsSHM;
+	if (!pkWebcamParamsSHM)
+	{
+		pkWebcamParamsSHM = new WinAPISharedMem<CropParams>();
+		pkWebcamParamsSHM->createSharedMem(_T("CropParams"), sizeof(CropParams), cropparams);
+	}
