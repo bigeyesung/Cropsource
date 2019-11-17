@@ -10,3 +10,11 @@
 #include "../Modules/VideoModule/VideoLoad.h"
 #include "../Modules/UDPProcess/UdpProcess.h"
 #include "../3rdParty/OpenCloseEXE/OpenCloseEXE.h"
+
+
+enum e_Port
+{
+	TCP_Port		= 1500,		//���Oport
+	UDP_Play_Port	= 2000,		//����port
+	UDP_IP_Port		= 8883,		//����IP
+};
