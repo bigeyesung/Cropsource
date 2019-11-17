@@ -37,3 +37,15 @@ TCPHandler::~TCPHandler()
 	//	p_mediator = NULL;
 	//}
 }
+
+void TCPHandler::init()
+{
+	//����serverIP
+	m_UDPBroadcastclient = new UDPBroadcastClient(UDP_IP_Port);
+	//TCP Client
+	ProjClient.InitSocket();
+	//���]�w���A���ܼƫ��е�TCP
+	ProjClient.SetSataePtr(&m_DrawState);
+	//set udp broadcast
+	//�ե��ݤ���}�ҦP�˪�port �|�X��
+	m_udpClient.init(true, UDP_Play_Port, "");
