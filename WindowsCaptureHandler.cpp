@@ -63,3 +63,21 @@ void WindowsCaptureHandler::Draw()
 		m_Step++;
 	}
 	else if(m_Step == 1)
+    	{
+		//�j�wDX GL texture
+		if (IsSelectWindow)
+		{
+			m_DirectXWindowCapture.InitGLDX_ShareTexture(0);
+			IsSelectWindow = false;
+		}
+		//��s�e��
+		m_DirectXWindowCapture.UpdateHDC();
+		//�X�ݦ@�ɸ귽 �n��lock ���� unlock
+		m_DirectXWindowCapture.LockDX();
+		p_mediator->GetTCPhandler()->Draw_WindowCapture();
+		m_DirectXWindowCapture.UnLockDX();
+
+
+
+	}
+}
