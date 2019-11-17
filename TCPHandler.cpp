@@ -228,3 +228,23 @@ else if (m_DrawState == State_WaitServerInstruction)
 		console() << "Error State" << std::endl;
 	}
 }
+
+oid TCPHandler::ConnectServer()
+{
+	if (m_Step == 0)//�]�w
+	{
+		//�_�u�]�w�U�h
+		getWindow()->setAlwaysOnTop(false);
+		//�_�u���p
+		ShowCursor(true);
+
+		//�����j�p�^�_
+		setWindowPos(50, 50);
+		setWindowSize(150, 100);
+		getWindow()->setBorderless(false);
+
+		m_IsConnect = false;
+		m_UDPBroadcastclient->OpenSocket(UDP_IP_Port);
+		m_UDPBroadcastclient->Listen();
+		m_Step++;
+	}
