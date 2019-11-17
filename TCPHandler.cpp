@@ -49,3 +49,9 @@ void TCPHandler::init()
 	//set udp broadcast
 	//�ե��ݤ���}�ҦP�˪�port �|�X��
 	m_udpClient.init(true, UDP_Play_Port, "");
+
+    	////���ճ�i��
+	m_ImgTexture = gl::Texture::create(800, 600);
+
+	DrawInit("ProjectorConfig2");
+}
