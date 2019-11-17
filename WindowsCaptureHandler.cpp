@@ -44,3 +44,13 @@ bool WindowsCaptureHandler::FindAllWindowTitle(vector<string>& AllTitle)
 	m_DirectXWindowCapture.FindAllWindowTitle(AllTitle);	
 	return true;
 }
+
+bool WindowsCaptureHandler::SelectWindow(int TitleIndex)
+{
+	m_DirectXWindowCapture.SelectWindow(TitleIndex);
+	//���s����DX GL texture �j�w
+	IsSelectWindow = true;
+	//���s���� DrawInit
+	m_Step = 0;
+	return true;
+}
