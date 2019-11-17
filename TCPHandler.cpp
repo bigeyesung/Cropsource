@@ -100,3 +100,14 @@ void TCPHandler::Draw()
 		SendToServer(1);
 		ProjClient.Async_ReadStateString();
 	}
+	else if (m_DrawState == State_ReloadVideo_Reconnect)
+	{
+		TCPCmd = TCP_StopDraw;
+		//�_�u���p
+		m_udpClient.setNumber(-10);
+		m_VideoLoad.BindVideoTexture(m_udpClient.getNumber());
+		DrawTexture();
+		m_DrawState = State_WaitServerInstruction;
+		m_VideoLoad.ReleaseVideo();
+		m_IsConnect = false;
+	}
