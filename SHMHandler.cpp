@@ -30,3 +30,12 @@ SHMHandler::~SHMHandler()
 void SHMHandler::SetSHMStatus(bool is_enabled)
 {
 }
+
+bool SHMHandler::GetSHMStatus()
+{
+	
+	if (cropparams->NotifytoPlayer == 0)
+		return false;
+	else
+		return true;
+}
