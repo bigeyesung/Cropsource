@@ -14,3 +14,10 @@ class WindowsCaptureHandler
 public:
 	explicit WindowsCaptureHandler(Mediator* mediator);
 	~WindowsCaptureHandler();
+
+	bool GetWCStatus() { return TitleButtonPressed; }                        
+	void SetWCStatus(bool WindowCapture) { TitleButtonPressed = WindowCapture; }
+
+	bool init();
+	
+	void Draw();
