@@ -72,3 +72,9 @@ void TCPHandler::CreateShader(string VertexShaderPath, string FragShaderPath)
 		exit(EXIT_FAILURE);
 	}
 }
+
+void TCPHandler::Update()
+{
+	ProjClient.Async_Update();
+	m_udpClient.update();
+}
