@@ -26,3 +26,15 @@ bool WindowsCaptureHandler::init()
 	}
 	return true;
 }
+
+void WindowsCaptureHandler::DrawInit()
+{
+	//�q xml ����W�����M�צW��
+	//�w�]����
+	p_mediator->GetTCPhandler()->DrawInit("ProjectorConfig2.xml");
+	//�]�wshader Ū1�i texture UV ����
+	p_mediator->GetTCPhandler()->SetShaderPara_WindowCapture(0);
+	////����� �w�]�eindex 0
+	//vector<string> title;
+	//m_DirectXWindowCapture.FindAllWindowTitle(title);
+}
