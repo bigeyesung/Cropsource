@@ -148,3 +148,9 @@ void TCPHandler::Draw()
 		p_mediator->GetWChandler()->SetWCStatus(true);
 		//�j�wDX GL texture
 		p_mediator->GetWChandler()->getDX_GLobject().InitGLDX_ShareTexture(CinderBindIndex);
+        	m_DrawState = State_DrawWindowCapture;
+		//TCP ���B���� ���ݤ����������O
+		ProjClient.Async_ReadStateString();
+		//�^�ǽT�{�T�� �w�}�l�e
+		SendToServer(1);
+	}
