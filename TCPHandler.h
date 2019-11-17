@@ -52,3 +52,13 @@ public:
 	//Ū�� ����shader mesh ��� , ���i���Ƨ��� �ҥH���sŪ���P���ɮ�
 	void DrawInit(string ReceiveName, bool ReInit = false);
 	bool IsWindowCapture() { return m_DrawState == State_DrawWindowCapture; }//�^�ǬO�_�b�����^��
+
+private:
+	//�o�T���� server
+	void SendToServer(int in);
+	void SendToServer(string in);
+
+	//�]�wshade �Ѽ�
+	void SetShaderPara();
+	//Ū��glsl shader
+	void CreateShader(string VertexShaderPath, string FragShaderPath);
