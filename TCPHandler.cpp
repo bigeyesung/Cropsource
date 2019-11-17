@@ -305,3 +305,12 @@ oid TCPHandler::ConnectServer()
 		}
 	}
 }
+
+void TCPHandler::SendToServer(string in)
+{
+	if (in != "")
+	{
+		console() << "Send Some" << std::endl;
+		ProjClient.SendString(in);
+	}
+}
