@@ -350,3 +350,6 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 			//setWindowPos(TotalOffset, 0);
 			m_WinOffset = TotalOffset;
 		}
+    	m_ProjectorNum = m_InitData.DisplayNum;
+		m_WinWidth = m_InitData.WindowsWidth;
+		m_WinHigh = m_InitData.WindowsHigh;
