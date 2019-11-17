@@ -352,4 +352,4 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 		}
     	m_ProjectorNum = m_InitData.DisplayNum;
 		m_WinWidth = m_InitData.WindowsWidth;
-		m_WinHigh = m_InitData.WindowsHigh;
+		m_WinHigh = m_InitData.WindowsHigh; 
