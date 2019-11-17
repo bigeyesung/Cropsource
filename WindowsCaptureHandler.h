@@ -41,3 +41,10 @@ public:
 	int DrawSrate;
 	int m_Step;
 };
+
+enum WC_DrawStatus
+{
+	WC_DrawStatus_DrawTexture,
+	WC_DrawStatus_StopDraw,
+
+};
