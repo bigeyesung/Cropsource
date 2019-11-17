@@ -89,4 +89,4 @@ private:
 	//���ե� ��v���ƶq
 	int m_ProjectorNum;
 	//���զsŪ��
-	//vector<vector<joints>> f_Pos;
+	//vector<vector<joints>> f_Pos; 
