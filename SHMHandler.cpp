@@ -86,3 +86,11 @@ void SHMHandler::WriteToShm(const CropParams & CropData)
 	*cropparams = CropData;
 	
 }
+
+CropParams* SHMHandler::LoadFromShm()
+{
+	if (cropparams)
+		return cropparams;
+	else
+		return nullptr;
+}
