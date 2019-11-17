@@ -261,3 +261,16 @@ oid TCPHandler::ConnectServer()
 			m_Step++;
 		}
 	}   
+
+    else if (m_Step == 2)//�n�D�s�u
+	{
+		ProjClient.Async_Connect();
+		ProjClient.Async_Update();
+		FrameNum++;//��frame
+		if (ProjClient.ConnectSuccess())//�s�u���\
+		{
+			//�s�u���\  �������ե���
+			if (!m_OpenCloseExe.CloseExe(ExeName_CalibrationClient))
+			{
+				console() << "close exe failed" << endl;
+			}
