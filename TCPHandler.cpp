@@ -296,3 +296,12 @@ oid TCPHandler::ConnectServer()
 			//���÷ƹ�
 			ShowCursor(false);
 		}
+    //�p�G�W�L15�� �^����UDP �s��IP
+		else if (FrameNum >= (getFrameRate() * 15))
+		{
+			m_IsConnect = false;
+			FrameNum = 0;
+			m_Step = 0;
+		}
+	}
+}
