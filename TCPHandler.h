@@ -17,4 +17,4 @@ enum e_Port
 	TCP_Port		= 1500,		//���Oport
 	UDP_Play_Port	= 2000,		//����port
 	UDP_IP_Port		= 8883,		//����IP
-};
+};  
