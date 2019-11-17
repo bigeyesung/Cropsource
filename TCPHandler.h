@@ -79,3 +79,14 @@ private:
 	int m_Step;
 	//�T�{�T�� 1:���A���� -1:���o�e ��L:����
 	int EndStateMessage;
+    //xml���
+	s_InitData m_InitData;
+	//�s�u��������A
+	int m_WinOffset;
+	int m_WinWidth;
+	int m_WinHigh;
+
+	//���ե� ��v���ƶq
+	int m_ProjectorNum;
+	//���զsŪ��
+	//vector<vector<joints>> f_Pos;
