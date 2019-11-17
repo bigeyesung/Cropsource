@@ -56,3 +56,9 @@ bool SHMHandler::init()
 		//system("pause");
 		return false;
 	}
+
+	cropparams->ExeFileopen = 1;
+	std::memset(cropparams->path, '\0', sizeof(char) * 60000);
+	std::memset(cropparams->path, '\0', sizeof(char) * 60000);
+	return true;
+}
