@@ -184,4 +184,4 @@ else if (m_DrawState == State_WaitServerInstruction)
 			//���BTCPŪ��
 			ProjClient.Async_ReadString();
 			m_Step++;
-		}
+		}   
