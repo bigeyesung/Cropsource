@@ -90,3 +90,12 @@ private:
 	int m_ProjectorNum;
 	//���զsŪ��
 	//vector<vector<joints>> f_Pos; 
+    	Mediator* p_mediator;
+	//TCP ���q
+	TCPClientClass ProjClient;
+	//��������Ƥ��R
+	DataBreakDown m_DataBreakDown;
+	//����serverIP
+	UDPBroadcastClient* m_UDPBroadcastclient;
+	//�v���P�B �������e����frame��
+	UdpProcess m_udpClient;
