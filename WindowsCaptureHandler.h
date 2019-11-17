@@ -32,3 +32,12 @@ public:
 
 	Mediator* p_mediator;
 	bool TitleButtonPressed;        //search button pressed
+
+    	//�����^��class
+	DirectXWindowCapture m_DirectXWindowCapture;
+	//�O�_��ܤF����
+	bool IsSelectWindow;
+
+	int DrawSrate;
+	int m_Step;
+};
