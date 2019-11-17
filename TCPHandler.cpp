@@ -122,3 +122,10 @@ void TCPHandler::Draw()
 			setWindowPos(m_WinOffset, 0);
 			setWindowSize(m_ProjectorNum * m_WinWidth, m_WinHigh);
 		}
+        	TCPCmd = TCP_DrawTexture;
+		//TCP ���B���� �����������O
+		ProjClient.Async_ReadStateString();
+		m_DrawState = State_PlayVideo;
+		//�o�e�T����server�A�w�i�H�}�l����
+		SendToServer(1);
+	}
