@@ -26,3 +26,18 @@ enum TCPStatus
 	TCP_StopDraw,			//����
 	TCP_GetAllWindowTitle,	//���o�Ҧ������W��
 };
+
+class Mediator;
+class TCPHandler
+{  
+public:
+	explicit TCPHandler(Mediator* mediator);
+	~TCPHandler();
+	
+	void init();
+	//TCP �O�_�s�u
+	bool GetTCPStatus() { return m_IsConnect; }
+	//���e���O
+	int  GetTCPCmd() { return TCPCmd; }
+	//���s�u�b����
+	void Update();
