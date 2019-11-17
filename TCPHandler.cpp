@@ -334,3 +334,19 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 			m_WinOffset = 0;
 			//setWindowPos(0, 0);
 		}
+    	else
+		{
+			//�첾�q���@�w���۵�(�ù��i��4K ��v��HD ��)
+			int TotalOffset = 0;;
+			vector<DisplayRef> DisplayData;
+			DisplayData = ci::Display::getDisplays();
+			if ((m_InitData.WindowsOffset > 0) && (m_InitData.WindowsOffset <= DisplayData.size()))
+			{
+				for (int i = 0; i < m_InitData.WindowsOffset; i++)
+				{
+					TotalOffset += DisplayData[i]->getWidth();//�N�ݭn�첾�ƶq���ѪR�ץ[�_��
+				}
+			}
+			//setWindowPos(TotalOffset, 0);
+			m_WinOffset = TotalOffset;
+		}
