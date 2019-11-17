@@ -129,3 +129,11 @@ void TCPHandler::Draw()
 		//�o�e�T����server�A�w�i�H�}�l����
 		SendToServer(1);
 	}
+    else if (m_DrawState == State_DrawWindowCapture)
+	{
+		//��sDX texture
+		p_mediator->GetWChandler()->getDX_GLobject().UpdateHDC();
+		p_mediator->GetWChandler()->getDX_GLobject().LockDX();
+		DrawTexture();
+		p_mediator->GetWChandler()->getDX_GLobject().UnLockDX();
+	}
