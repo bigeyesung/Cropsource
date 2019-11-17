@@ -137,3 +137,14 @@ void TCPHandler::Draw()
 		DrawTexture();
 		p_mediator->GetWChandler()->getDX_GLobject().UnLockDX();
 	}
+    else if (m_DrawState == State_preDrawWindowCapture)
+	{
+		TCPCmd = TCP_WindowCapture;
+		m_Step = 0;
+		int CinderBindIndex = 0;
+		SetShaderPara_WindowCapture(CinderBindIndex);
+		//��ܫ��w����
+		p_mediator->GetWChandler()->SelectWindow(m_StateData[StateSetData_Count]);
+		p_mediator->GetWChandler()->SetWCStatus(true);
+		//�j�wDX GL texture
+		p_mediator->GetWChandler()->getDX_GLobject().InitGLDX_ShareTexture(CinderBindIndex);
