@@ -18,3 +18,11 @@ enum e_Port
 	UDP_Play_Port	= 2000,		//����port
 	UDP_IP_Port		= 8883,		//����IP
 };  
+
+enum TCPStatus
+{
+	TCP_DrawTexture,		//�v������ �i�H�P�_shm
+	TCP_WindowCapture,
+	TCP_StopDraw,			//����
+	TCP_GetAllWindowTitle,	//���o�Ҧ������W��
+};
