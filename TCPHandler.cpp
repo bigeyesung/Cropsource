@@ -66,3 +66,9 @@ void TCPHandler::CreateShader(string VertexShaderPath, string FragShaderPath)
 				, loadFile(FragShaderPath)));
 		}
 	}
+	catch (gl::GlslProgCompileExc &exc)
+	{
+		console() << "shader error";
+		exit(EXIT_FAILURE);
+	}
+}
