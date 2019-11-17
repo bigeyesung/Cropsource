@@ -20,3 +20,20 @@ TCPHandler::TCPHandler(Mediator* mediator)
 	//���� �n�ιw�]�ɦW
 	m_ProjectName = "ProjectorConfig2.xml";
 }
+
+TCPHandler::~TCPHandler()
+{
+	ProjClient.CloseSocket();
+	m_VideoLoad.EndThread();
+
+	if (m_UDPBroadcastclient != NULL)
+	{
+		delete m_UDPBroadcastclient;
+		m_UDPBroadcastclient = NULL;
+	}
+
+	//if (p_mediator != NULL)
+	//{
+	//	p_mediator = NULL;
+	//}
+}
