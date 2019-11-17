@@ -248,3 +248,16 @@ oid TCPHandler::ConnectServer()
 		m_UDPBroadcastclient->Listen();
 		m_Step++;
 	}
+    else if (m_Step == 1)//����IP
+	{
+		m_UDPBroadcastclient->AsynUpdate();
+		if (m_UDPBroadcastclient->getServerIP() != "None")
+		{
+			FrameNum = 0;
+			//�n�� ����� �M�Ϊ�port
+			ProjClient.SetServerIP(m_UDPBroadcastclient->getServerIP(), TCP_Port);
+			//����UDP����
+			m_UDPBroadcastclient->CloseSocket();
+			m_Step++;
+		}
+	}
