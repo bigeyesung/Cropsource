@@ -154,3 +154,16 @@ void TCPHandler::Draw()
 		//�^�ǽT�{�T�� �w�}�l�e
 		SendToServer(1);
 	}
+    else if (m_DrawState == State_GetAllWindowTitle)
+	{
+		if (m_Step == 0)//���o�e�����W�ٵ�Server
+		{
+			//TCPCmd = TCP_GetAllWindowTitle;
+			vector<string> AllTitle;
+			p_mediator->GetWChandler()->FindAllWindowTitle(AllTitle);
+			string tempS = "";
+			tempS = to_string(AllTitle.size()) + " ";
+			for (int i = 0; i < AllTitle.size(); i++)
+			{
+				tempS = tempS + AllTitle[i] + " ";
+			}
