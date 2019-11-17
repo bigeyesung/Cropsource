@@ -38,3 +38,9 @@ void WindowsCaptureHandler::DrawInit()
 	//vector<string> title;
 	//m_DirectXWindowCapture.FindAllWindowTitle(title);
 }
+
+bool WindowsCaptureHandler::FindAllWindowTitle(vector<string>& AllTitle)
+{
+	m_DirectXWindowCapture.FindAllWindowTitle(AllTitle);	
+	return true;
+}
