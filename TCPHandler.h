@@ -99,3 +99,15 @@ private:
 	UDPBroadcastClient* m_UDPBroadcastclient;
 	//�v���P�B �������e����frame��
 	UdpProcess m_udpClient;
+
+    	//shader
+	vector<gl::GlslProgRef> m_Shader;
+	//Mesh
+	vector<CustomMesh> m_CustomMesh;
+	//Ū���v��
+	VideoLoad m_VideoLoad;
+	//��i��
+	gl::TextureRef	m_ImgTexture;
+	//�}����L�{��
+	OpenCloseExe m_OpenCloseExe;
+};
