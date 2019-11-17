@@ -111,3 +111,14 @@ void TCPHandler::Draw()
 		m_VideoLoad.ReleaseVideo();
 		m_IsConnect = false;
 	}
+	else if (m_DrawState == State_PreparePlayVideo)
+	{
+		//�p�G���L�ɮצW �ݭn���sŪ��
+		if (true)//�C��PrePlay�����sŪ���v�� shader mesh
+		{
+
+			//��ƥi���L ���sŪ���ɮ�
+			DrawInit(m_ProjectName, true);
+			setWindowPos(m_WinOffset, 0);
+			setWindowSize(m_ProjectorNum * m_WinWidth, m_WinHigh);
+		}
