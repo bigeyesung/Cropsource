@@ -274,3 +274,14 @@ oid TCPHandler::ConnectServer()
 			{
 				console() << "close exe failed" << endl;
 			}
+
+            	//�s�u�]�w�W�h
+			getWindow()->setAlwaysOnTop(true);
+			//���o�M�צW
+			string ReceiveName = ProjClient.GetAsyncRead();
+			//�p�G�M�צW���P
+			DrawInit(ReceiveName);
+			//�]�w����
+			getWindow()->setBorderless();
+			setWindowPos(m_WinOffset, 0);
+			setWindowSize(m_ProjectorNum * m_WinWidth, m_WinHigh);
