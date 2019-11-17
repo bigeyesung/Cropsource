@@ -285,3 +285,14 @@ oid TCPHandler::ConnectServer()
 			getWindow()->setBorderless();
 			setWindowPos(m_WinOffset, 0);
 			setWindowSize(m_ProjectorNum * m_WinWidth, m_WinHigh);
+	//Focus �ۤv
+			HWND hwnd = FindWindow(L"CinderWinClass", L"ProjectorPlayerApp");
+			SetForegroundWindow(hwnd);
+
+			m_IsConnect = true;
+			m_DrawState = State_WaitServerInstruction;
+			EndStateMessage = 1;
+			m_Step = 0;
+			//���÷ƹ�
+			ShowCursor(false);
+		}
