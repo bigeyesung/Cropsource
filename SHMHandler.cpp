@@ -19,3 +19,10 @@ SHMHandler::~SHMHandler()
 		//delete cropparams;
 		cropparams = NULL;
 	}
+	if (pkWebcamParamsSHM != NULL)
+	{
+		delete pkWebcamParamsSHM;
+		pkWebcamParamsSHM = NULL;
+	}
+	
+}
