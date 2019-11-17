@@ -69,3 +69,13 @@ private:
 	void DrawTexture();
 	//Ū���v��
 	void LoadVideoFirst(const vector<string>& VideoPath);
+	vector<int> m_StateData;
+	bool m_IsConnect;
+	//���e�M�צW��
+	string m_ProjectName;
+	int TCPCmd;
+	int FrameNum;//�p�ɥ�
+	int m_DrawState;
+	int m_Step;
+	//�T�{�T�� 1:���A���� -1:���o�e ��L:����
+	int EndStateMessage;
