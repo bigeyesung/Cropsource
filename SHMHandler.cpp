@@ -62,3 +62,11 @@ bool SHMHandler::init()
 	std::memset(cropparams->path, '\0', sizeof(char) * 60000);
 	return true;
 }
+
+void SHMHandler::Clear()
+{
+	if (pkWebcamParamsSHM != NULL)
+	{
+		delete pkWebcamParamsSHM;
+		pkWebcamParamsSHM = NULL;
+	}
