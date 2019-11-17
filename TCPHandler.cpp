@@ -184,4 +184,16 @@ else if (m_DrawState == State_WaitServerInstruction)
 			//���BTCPŪ��
 			ProjClient.Async_ReadString();
 			m_Step++;
-		}   
+		}
+    	else if (m_Step == 1)
+		{
+			ProjClient.Async_Update();
+
+			//���s�u���p �i�Q�i�ե�
+			gl::color(Color(1, 0, 1));
+			for (int i = 0; i < m_ProjectorNum; i++)
+			{
+				gl::drawStringCentered("Ctrl + Enter",
+					vec2(1920 / 2 + i * 1920, 1080 / 2), 
+					Color(1, 1, 1), Font("", 200));
+			}   
