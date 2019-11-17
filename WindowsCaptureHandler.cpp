@@ -54,3 +54,12 @@ bool WindowsCaptureHandler::SelectWindow(int TitleIndex)
 	m_Step = 0;
 	return true;
 }
+
+void WindowsCaptureHandler::Draw()
+{
+	if (m_Step == 0)
+	{
+		//DrawInit();
+		m_Step++;
+	}
+	else if(m_Step == 1)
