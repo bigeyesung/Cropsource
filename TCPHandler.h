@@ -62,3 +62,10 @@ private:
 	void SetShaderPara();
 	//Ū��glsl shader
 	void CreateShader(string VertexShaderPath, string FragShaderPath);
+	//�إ�mesh
+	void SetMeshData();
+	void generateMonitorPoint(vector<vector<joints>>& PointArr, int aliquots_w, int aliquots_h);
+	//�etexture
+	void DrawTexture();
+	//Ū���v��
+	void LoadVideoFirst(const vector<string>& VideoPath);
