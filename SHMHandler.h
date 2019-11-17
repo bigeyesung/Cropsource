@@ -19,7 +19,7 @@ private:
 public:
 	explicit SHMHandler(Mediator* mediator);
 	~SHMHandler();
-	bool init();                                           //��l��
+    bool init();                                                //��l��
 	void Clear();                                          //Clear SHM 
 	void SetSHMStatus(bool is_enabled);                    //�]�wSHM���A
 	bool GetSHMStatus();                                   //���oSHM���A
