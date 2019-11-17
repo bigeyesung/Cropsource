@@ -173,3 +173,15 @@ void TCPHandler::Draw()
 			m_DrawState = State_WaitServerInstruction;
 		}
 	}
+else if (m_DrawState == State_WaitServerInstruction)
+	{
+		if (m_Step == 0)
+		{
+			//m_VideoLoad.ReleaseVideo();
+			//����state���o�e�T���� server
+			SendToServer(EndStateMessage);
+			TCPCmd = TCP_StopDraw;
+			//���BTCPŪ��
+			ProjClient.Async_ReadString();
+			m_Step++;
+		}
