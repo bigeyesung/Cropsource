@@ -26,3 +26,9 @@ public:
 	bool SelectWindow(int TitleIndex);
 
 	DirectXWindowCapture& getDX_GLobject() { return m_DirectXWindowCapture; }
+
+    private:
+	void DrawInit();
+
+	Mediator* p_mediator;
+	bool TitleButtonPressed;        //search button pressed
