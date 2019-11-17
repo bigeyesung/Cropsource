@@ -78,3 +78,14 @@ void TCPHandler::Update()
 	ProjClient.Async_Update();
 	m_udpClient.update();
 }
+
+void TCPHandler::Draw()
+{
+	if (m_DrawState == State_PlayVideo)
+	{
+		if (m_udpClient.getNumber() != -10)
+		{
+			TCPCmd = TCP_DrawTexture;
+		}
+		m_VideoLoad.BindVideoTexture(m_udpClient.getNumber());
+		DrawTexture();
