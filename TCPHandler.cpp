@@ -55,3 +55,14 @@ void TCPHandler::init()
 
 	DrawInit("ProjectorConfig2");
 }
+
+void TCPHandler::CreateShader(string VertexShaderPath, string FragShaderPath)
+{
+	try
+	{
+		for (int i = 0; i < m_Shader.size(); i++)
+		{
+			m_Shader[i] = (gl::GlslProg::create(loadFile(VertexShaderPath)
+				, loadFile(FragShaderPath)));
+		}
+	}
