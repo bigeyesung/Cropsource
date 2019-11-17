@@ -364,3 +364,18 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 			//tempVS[i] = f_ExePath + ResourcePath + m_InitData.VideoName[i];
 			tempVS[i] = f_ExePath + VideoPath + m_InitData.VideoName[i];
 		}
+
+    LoadVideoFirst(tempVS);
+		//���ͧ�v�����ƶq �P�_�O�_����ƶq
+		m_CustomMesh.resize(m_InitData.DisplayNum);
+		m_Shader.resize(m_InitData.DisplayNum);
+		//�إ� shader 
+		CreateShader(f_ExePath + ShaderPath + "m_vertex.glsl",
+			f_ExePath + ShaderPath + "m_frag_v150_AllBlending.glsl");
+		//shader��� Ū�� �]�w
+		SetShaderPara();
+		//mesh �I��� Ū�� �]�w
+		SetMeshData();
+	}
+
+}
