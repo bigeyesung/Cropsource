@@ -327,3 +327,10 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 		//p_mediator->GetXmlProcess()->ReadXml(f_ExePath + ConfigPath + "ProjectorConfig2.xml");//test			
 		p_mediator->GetXmlProcess()->ReadXml(f_ExePath + ConfigPath + m_ProjectName + ".xml");//test			
 		p_mediator->GetXmlProcess()->GetData(m_InitData);
+    		//getWindow()->setBorderless();
+		//�p�G�ù��ƶq���� �]�w����v���ƶq Offset = 0
+		if (ci::Display::getDisplays().size() == m_InitData.DisplayNum)
+		{
+			m_WinOffset = 0;
+			//setWindowPos(0, 0);
+		}
