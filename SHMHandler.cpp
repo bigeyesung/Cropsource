@@ -8,3 +8,14 @@ SHMHandler::SHMHandler(Mediator* mediator)
 	//pkWebcamParamsSHM = NULL;
 	cropparams = NULL;
 }
+
+SHMHandler::~SHMHandler()
+{
+	//����player->cropparams->ExeFileopen�]��0;
+	cropparams->ExeFileopen = 0;
+
+	if (cropparams != NULL)
+	{
+		//delete cropparams;
+		cropparams = NULL;
+	}
