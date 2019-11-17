@@ -7,3 +7,10 @@
 using namespace ci;
 using namespace ci::app;
 using namespace std;
+
+class Mediator;
+class WindowsCaptureHandler
+{
+public:
+	explicit WindowsCaptureHandler(Mediator* mediator);
+	~WindowsCaptureHandler();
