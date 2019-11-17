@@ -26,3 +26,7 @@ SHMHandler::~SHMHandler()
 	}
 	
 }
+
+void SHMHandler::SetSHMStatus(bool is_enabled)
+{
+}
