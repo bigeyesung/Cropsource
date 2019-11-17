@@ -21,3 +21,8 @@ public:
 	bool init();
 	
 	void Draw();
+
+    	bool FindAllWindowTitle(vector<string>& AllTitle);
+	bool SelectWindow(int TitleIndex);
+
+	DirectXWindowCapture& getDX_GLobject() { return m_DirectXWindowCapture; }
