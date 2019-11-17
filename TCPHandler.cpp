@@ -89,3 +89,14 @@ void TCPHandler::Draw()
 		}
 		m_VideoLoad.BindVideoTexture(m_udpClient.getNumber());
 		DrawTexture();
+    	}
+	else if(m_DrawState == State_ReloadVideo)
+	{
+		TCPCmd = TCP_StopDraw;
+		m_udpClient.setNumber(-10);
+		m_VideoLoad.BindVideoTexture(m_udpClient.getNumber());
+		DrawTexture();
+		m_DrawState = State_PlayVideo;
+		SendToServer(1);
+		ProjClient.Async_ReadStateString();
+	}
