@@ -213,3 +213,18 @@ else if (m_DrawState == State_WaitServerInstruction)
 					}
 					m_DrawState = m_StateData[StateSetData_CurrentState];
 				}
+        	else//�_�u
+				{
+					m_Step = 0;
+					m_IsConnect = false;
+					console() << "Re Connect" << std::endl;
+					//m_DrawState = State_GetServerIP;
+				}
+			}
+		}
+	}
+	else//�������O
+	{
+		console() << "Error State" << std::endl;
+	}
+}
