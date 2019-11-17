@@ -197,3 +197,19 @@ else if (m_DrawState == State_WaitServerInstruction)
 					vec2(1920 / 2 + i * 1920, 1080 / 2), 
 					Color(1, 1, 1), Font("", 200));
 			}   
+
+        	if (ProjClient.GetAsyncRead() != "")
+			{
+				string tempS = ProjClient.GetAsyncRead();
+				if (tempS != "Error")
+				{
+					m_Step = 0;
+					EndStateMessage = 1;
+					m_DataBreakDown.StringToIntData(tempS, m_StateData, tempS);
+					//�s�ɦW
+					if (tempS != "")
+					{
+						DrawInit(tempS);
+					}
+					m_DrawState = m_StateData[StateSetData_CurrentState];
+				}
