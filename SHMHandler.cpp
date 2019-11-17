@@ -50,3 +50,9 @@ bool SHMHandler::init()
 		pkWebcamParamsSHM = new WinAPISharedMem<CropParams>();
 		pkWebcamParamsSHM->createSharedMem(_T("CropParams"), sizeof(CropParams), cropparams);
 	}
+	if (cropparams == NULL)
+	{
+		//printf("Failed to create ExchangeInfo shared memory\n");
+		//system("pause");
+		return false;
+	}
