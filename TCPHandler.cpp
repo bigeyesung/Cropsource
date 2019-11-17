@@ -167,3 +167,9 @@ void TCPHandler::Draw()
 			{
 				tempS = tempS + AllTitle[i] + " ";
 			}   
+            		EndStateMessage = -1;
+			//�����W�٥N���T�{�T��
+			SendToServer(tempS);
+			m_DrawState = State_WaitServerInstruction;
+		}
+	}
