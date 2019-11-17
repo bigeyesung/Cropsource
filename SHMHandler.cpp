@@ -80,3 +80,9 @@ void SHMHandler::Clear()
 
 
 }
+
+void SHMHandler::WriteToShm(const CropParams & CropData)
+{
+	*cropparams = CropData;
+	
+}
