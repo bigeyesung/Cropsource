@@ -372,9 +372,9 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 		//�إ� shader 
 		CreateShader(f_ExePath + ShaderPath + "m_vertex.glsl",
 			f_ExePath + ShaderPath + "m_frag_v150_AllBlending.glsl");
-		//shader��� Ū�� �]�w
+		//shader
 		SetShaderPara();
-		//mesh �I��� Ū�� �]�w
+		//mesh 
 		SetMeshData();
 	}
 
