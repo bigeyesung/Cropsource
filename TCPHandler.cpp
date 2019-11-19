@@ -354,19 +354,19 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 		m_WinWidth = m_InitData.WindowsWidth;
 		m_WinHigh = m_InitData.WindowsHigh; 
 
-    	//�v�����|
+    	//
 		vector<string> tempVS;
 		tempVS.resize(m_InitData.VideoName.size());
 		for (int i = 0; i < tempVS.size(); i++)
 		{
-			//�v���ɦW�� "�ǮצW��_Crop_i.mp4"
+			//Crop_i.mp4"
 			//m_InitData.VideoName[i] = ReceiveName+"_Crop_" + to_string(i) + ".mp4"
 			//tempVS[i] = f_ExePath + ResourcePath + m_InitData.VideoName[i];
 			tempVS[i] = f_ExePath + VideoPath + m_InitData.VideoName[i];
 		}
 
     LoadVideoFirst(tempVS);
-		//���ͧ�v�����ƶq �P�_�O�_����ƶq
+		
 		m_CustomMesh.resize(m_InitData.DisplayNum);
 		m_Shader.resize(m_InitData.DisplayNum);
 		//�إ� shader 
