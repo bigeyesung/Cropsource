@@ -321,9 +321,9 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 	{
 		m_ProjectName = ReceiveName;
 		string f_ExePath = p_mediator->GetExePath();
-		//���sŪ��
+		//
 		p_mediator->GetXmlProcess()->CloseXml();
-		//���� �n�αM�צW��
+		//
 		//p_mediator->GetXmlProcess()->ReadXml(f_ExePath + ConfigPath + "ProjectorConfig2.xml");//test			
 		p_mediator->GetXmlProcess()->ReadXml(f_ExePath + ConfigPath + m_ProjectName + ".xml");//test			
 		p_mediator->GetXmlProcess()->GetData(m_InitData);
