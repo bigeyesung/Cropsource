@@ -328,7 +328,7 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 		p_mediator->GetXmlProcess()->ReadXml(f_ExePath + ConfigPath + m_ProjectName + ".xml");//test			
 		p_mediator->GetXmlProcess()->GetData(m_InitData);
     		//getWindow()->setBorderless();
-		//�p�G�ù��ƶq���� �]�w����v���ƶq Offset = 0
+		// Offset = 0
 		if (ci::Display::getDisplays().size() == m_InitData.DisplayNum)
 		{
 			m_WinOffset = 0;
@@ -336,7 +336,7 @@ void TCPHandler::DrawInit(string ReceiveName, bool ReInit)
 		}
     	else
 		{
-			//�첾�q���@�w���۵�(�ù��i��4K ��v��HD ��)
+			
 			int TotalOffset = 0;;
 			vector<DisplayRef> DisplayData;
 			DisplayData = ci::Display::getDisplays();
